@@ -21,6 +21,7 @@ def transform_info(df, columna):
     duplicados = num_registros - valores_unicos
     valores_nulos = df[columna].isnull().sum()
     dtype = df[columna].dtype
+
     print(f"Valores únicos: {valores_unicos}\nNúmero de registros: {num_registros}\nValores nulos: {valores_nulos}\nRegistros duplicados: {duplicados}\ndtype: {dtype}")
     print('----------------')
     print("\nPorcentajes:")
@@ -55,12 +56,12 @@ def to_doc_info(df, columna):
     valores_nulos = df[columna].isnull().sum()
     dtype = df[columna].dtype
     frecuencias = df[columna].value_counts(normalize=True, dropna=False).mul(100).round(2).sort_values(ascending=False)
-    tabla_frecuencias = "\n".join([f"{idx}ㅤㅤ{val}" for idx, val in frecuencias.items()])
+    tabla_frecuencias = "\n".join([f"||{idx}ㅤㅤ{val}" for idx, val in frecuencias.items()])
 
     reporte = f"""
-|    Tipo   |   {columna}   |
+|    dtype: {dtype}  |   {columna}   |
 |-----------|---------------|
-| dtype: {dtype} |{tabla_frecuencias}<br><br>Valores únicos: **{valores_unicos}**<br>Número de registros: **{num_registros}**<br>Valores nulos: **{valores_nulos}**<br>Registros duplicados: **{duplicados}**
+{tabla_frecuencias}<br><br>Valores únicos: **{valores_unicos}**<br>Número de registros: **{num_registros}**<br>Valores nulos: **{valores_nulos}**<br>Registros duplicados: **{duplicados}**
 """
     return reporte
 
@@ -85,9 +86,7 @@ def transform_headtail(df, columna):
     print('----------------')
 
     frecuencias = df[columna].value_counts(normalize=True, dropna=False).mul(100).round(2)
-    print("\nTop 5 porcentajes:")
     print(frecuencias.head(5))
-    print("\nBottom 5 porcentajes:")
     print(frecuencias.tail(5))
 
 def to_doc_headtail(df, columna):
@@ -115,13 +114,16 @@ def to_doc_headtail(df, columna):
     dtype = df[columna].dtype
 
     frecuencias = df[columna].value_counts(normalize=True, dropna=False).mul(100).round(2)
-    top5 = "\n".join([f"{idx}ㅤㅤ{val}%" for idx, val in frecuencias.head(5).items()])
-    bottom5 = "\n".join([f"{idx}ㅤㅤ{val}%" for idx, val in frecuencias.tail(5).items()])
+    top5 = "\n".join([f"||{idx}ㅤㅤ{val}%" for idx, val in frecuencias.head(5).items()])
+    bottom5 = "\n".join([f"||{idx}ㅤㅤ{val}%" for idx, val in frecuencias.tail(5).items()])
 
     reporte = f"""
 |    dtype: {dtype}  |   {columna}   |
 |-----------|---------------|
-| Top 5: |{top5}
-|Bottom 5: |{bottom5}<br><br>Valores únicos: **{valores_unicos}**<br>Número de registros: **{num_registros}**<br>Valores nulos: **{valores_nulos}**<br>Registros duplicados: **{duplicados}**
+||Top 5:
+{top5}
+||Bottom 5:
+{bottom5}<br><br>Valores únicos: **{valores_unicos}**<br>Número de registros: **{num_registros}**<br>Valores nulos: **{valores_nulos}**<br>Registros duplicados: **{duplicados}**|
+---
 """
     return reporte

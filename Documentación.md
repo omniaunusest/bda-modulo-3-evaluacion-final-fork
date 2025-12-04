@@ -123,7 +123,6 @@ Ir a [customer loyalty](#customer-loyalty-history) para comparar con la columna 
 
     > Una mayoría reservó sus vueltos sin acompañante.
 
-Sin anomalías.
 
 ---
 ---
@@ -221,7 +220,7 @@ Contaremos para la observación sólo con la base de clientes que sí realizó v
 
     > El número de clientes que usa sus puntos es 11560 de una base con 16737 clientes registrados.
 
-Ir a visualización.
+[Ir a visualización](#programa-de-fidelización-y-puntos)
 
 ---
 ---
@@ -392,7 +391,29 @@ Observamos que los clientes se ubican en 29 ciudades, con 55 diferentes códigos
 ||Masterㅤㅤㅤㅤㅤㅤㅤㅤㅤ3.04<br><br>Valores únicos: **5**<br>Número de registros: **16737**<br>Valores nulos: **0**|
 ---
 
-Ir a visualización.
+El grueso de los clientes se encuentra entre la población con estudios superiores universitarios, pero no especializados mediante maestrías o doctorados.
+
+[Ir a visualización](#nivel-educativo)
+
+**Propuesta de mejora**:
+
+- La diferencia en el mundo anglosajón entre Bachelor y College es tan ínfima, que podríamos unificarlo y sugerirlo a la empresa de cara a su registro de datos futuros. Ventajas: descarta el espejismo de fragmentación poblacional en el sistema que no es tal.
+
+        Por ejemplo:
+            
+            University studies      87.9%
+            High School or Below     4.67%
+            Doctor                   4.39%
+            Master                   3.04%
+
+                        frente a
+
+            Bachelor                 62.59%
+            College                  25.32%
+            High School or Below      4.67%
+            Doctor                    4.39%
+            Master                    3.04          
+
 
 ---
 ---
@@ -535,8 +556,95 @@ Ir a visualización.
 ||1ㅤㅤ7.12<br><br>Valores únicos: **12**<br>Número de registros: **16737**<br>Valores nulos: **0**<br>|
 ---
 
-No se aprecia significativamente una tendencia diferencial entre meses.
+No se aprecia significativamente una tendencia diferencial entre meses, salvo por los dos primeros meses de mes que no parece que favorezcan la adhesión.
 
-### Cancelation Year
+Ir a visualización.
 
-### Cancelation Month
+---
+---
+
+### Cancellation Year
+
+*Año en que el cliente canceló su membresía en el programa de lealtad, si aplica.*
+
+|    dtype: float64  |   Cancellation Year   |
+|-----------|---------------|
+||NaN ㅤㅤ 87.65
+||2018.0ㅤㅤ3.85
+||2017.0ㅤㅤ3.02
+||2016.0ㅤㅤ2.55
+||2015.0ㅤㅤ1.58
+||2014.0ㅤㅤ1.08
+||2013.0ㅤㅤ0.26<br><br>Valores únicos: **6**<br>Número de registros: **16737**<br>Valores nulos: **14670**|
+---
+
+En ausencia de un dato afirmativo, parece indicar que la falta de datos implica la cifra de clientes que siguen adheridos al programa de lealtad.
+
+No obstante, la cancelación parece una tendencia creciente.
+
+
+---
+---
+
+### Cancellation Month
+
+*Mes en que el cliente canceló su membresía en el programa de lealtad, si aplica.*
+
+|    dtype: float64  |   Cancellation Month   |
+|-----------|---------------|
+||NaNㅤㅤ 87.65
+||12.0ㅤㅤㅤ1.27
+||11.0ㅤㅤㅤ1.27
+||8.0 ㅤㅤㅤ 1.24
+||7.0 ㅤㅤㅤ 1.11
+||10.0ㅤㅤㅤ1.08
+||9.0 ㅤㅤㅤ 1.05
+||6.0 ㅤㅤㅤ 0.99
+||1.0 ㅤㅤㅤ 0.93
+||3.0 ㅤㅤㅤ 0.89
+||5.0 ㅤㅤㅤ 0.88
+||2.0 ㅤㅤㅤ 0.83
+||4.0 ㅤㅤㅤ 0.81<br><br>Valores únicos: **12**<br>Número de registros: **16737**<br>Valores nulos: **14670**|
+---
+
+Los registros nulos en el campo asociado al mes, son la misma cantidad que en el campo asociado al año.
+
+Por lo que podemos afirmar:
+
+    > El 87.65% de los miembros que se han registrado en el programa de fidelidad, mantienen su membresía activa a día de hoy.
+
+---
+---
+ㅤ  
+# Visualización de datos
+
+### Programa de fidelización y puntos
+
+<figure>
+    <img src='img/v1.png '
+         alt="Uso de puntos del programa de fidelidad"
+         width="336" height="340">
+    <figcaption>El uso de los puntos del programa de fidelidad muestra un mayor número de clientes que los han usado.</figcaption>
+</figure>
+
+---
+
+### Nivel Educativo
+
+<figure>
+<img src='img/v2.png '
+         alt="Nivel educativo de los clientes"
+         width="336" height="340">
+    <figcaption>El registro mayoritario de clientes se encuentra entre la población con estudios universitarios de Licenciaturas y Grados: equivale a un 87.9% </figcaption>
+</figure>
+
+---
+
+### Distribución del CLV
+
+<figure>
+<img src='img/v3.png '
+         alt="Nivel educativo de los clientes"
+         width="700" height="400">
+    <figcaption>El grueso de la mayor parte de beneficios por cliente es modesto, pero más sustancial en cantidad que los 'outliers', o casos excepcionales, cuyo beneficio estimado es mayor.</figcaption>
+</figure>
